@@ -1,0 +1,143 @@
+/* style.css (v1.36+ - Light Theme - Incluye estilos de estado) */
+
+/* --- Paleta y Variables --- */
+:root {
+    /* Colores Base */
+    --light-bg-primary: #ffffff;
+    --light-bg-secondary: #f8f9fa;
+    --light-bg-tertiary: #ffffff;
+    --light-border-color: #dee2e6;
+    --light-text-primary: #212529;
+    --light-text-secondary: #6c757d;
+    --light-accent-primary: #0d6efd; /* Azul Bootstrap */
+    --light-accent-secondary: #0a58ca; /* Azul más oscuro */
+
+    /* Colores Alertas Bootstrap Light */
+    --light-info-bg: #e7f3fe;   --light-info-border: #0d6efd;   --light-info-text: #0a58ca;
+    --light-warning-bg: #fff3cd; --light-warning-border: #ffc107; --light-warning-text: #664d03;
+    --light-success-bg: #d1e7dd; --light-success-border: #198754; --light-success-text: #0f5132;
+    --light-error-bg: #f8d7da;   --light-error-border: #dc3545;   --light-error-text: #842029;
+
+    /* Colores para estado umbral (basados en alertas) */
+    --status-normal-color: var(--light-success-text);
+    --status-alta-color: var(--light-warning-text);
+    --status-muy-alta-color: var(--light-error-text);
+    --status-muy-baja-color: var(--light-info-text);
+    --status-default-color: var(--light-text-secondary); /* Para Indeterminado, etc. */
+}
+
+/* --- Estilos Generales --- */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: var(--light-bg-secondary); /* Fondo general gris claro */
+    color: var(--light-text-primary);
+}
+.main .block-container {
+    padding-top: 2rem; padding-bottom: 2rem; padding-left: 2rem; padding-right: 2rem;
+    max-width: 100%; /* Aprovechar ancho si layout="wide" */
+}
+h1, h2, h3, h4, h5, h6 { color: #343a40; font-weight: 600; }
+a:link, a:visited { color: var(--light-accent-primary); text-decoration: none; }
+a:hover { color: var(--light-accent-secondary); text-decoration: underline; }
+code {
+    color: #d63384; /* Color rosado para código inline */
+    background-color: rgba(0,0,0,0.04);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+/* Dataframes */
+.stDataFrame { background-color: var(--light-bg-primary); border: 1px solid var(--light-border-color); border-radius: 6px; overflow: hidden; }
+.stDataFrame table { color: var(--light-text-primary); }
+.stDataFrame th { background-color: var(--light-bg-secondary); color: var(--light-text-primary); font-weight: 600; border-bottom: 2px solid var(--light-border-color) !important; }
+.stDataFrame tbody tr { border-top: 1px solid var(--light-border-color); }
+.stDataFrame tbody tr:nth-child(odd) { background-color: var(--light-bg-primary); }
+.stDataFrame tbody tr:nth-child(even) { background-color: var(--light-bg-secondary); }
+
+/* --- Barra Lateral --- */
+[data-testid="stSidebar"] { background-color: var(--light-bg-primary); padding: 1.5rem; border-right: 1px solid var(--light-border-color); }
+[data-testid="stSidebar"] h1, [data-testid="stSidebar"] h2, [data-testid="stSidebar"] h3 { color: var(--light-text-primary); }
+/* Estilo Navegación Radio */
+[data-testid="stSidebar"] .stRadio [role="radiogroup"] { border: none; padding: 0; border-radius: 0; background-color: transparent; }
+[data-testid="stSidebar"] .stRadio label { display: block; padding: 0.5rem 0.75rem; margin-bottom: 0.25rem; border-radius: 6px; transition: background-color 0.2s ease, color 0.2s ease; cursor: pointer; border: 1px solid transparent; }
+[data-testid="stSidebar"] .stRadio label:hover { background-color: #eef2f6; } /* Gris muy claro hover */
+[data-testid="stSidebar"] .stRadio input[type="radio"]:checked + div { font-weight: 600; color: var(--light-accent-secondary); }
+[data-testid="stSidebar"] .stRadio label[data-baseweb="radio"] { background-color: #e7f3fe; border: 1px solid var(--light-accent-primary); color: var(--light-accent-secondary); } /* Resaltar opción seleccionada */
+/* Botón Logout */
+[data-testid="stSidebar"] .stButton>button[kind="secondary"] { border: 1px solid #dc3545; color: #dc3545; width: 100%; margin-top: 1rem; background-color: transparent; font-weight: 500; }
+[data-testid="stSidebar"] .stButton>button[kind="secondary"]:hover { background-color: #dc3545; color: white; border-color: #dc3545; }
+[data-testid="stSidebar"] .stCaption { font-size: 0.8em; text-align: center; margin-top: 2rem; color: var(--light-text-secondary); }
+/* Mensajes Sidebar (si se usan con markdown) */
+.sidebar-success-message { color: var(--light-success-text); font-weight: 500; padding: 0.2rem 0; margin-bottom: 0.5rem; }
+.sidebar-info-message { color: var(--light-info-text); padding: 0.2rem 0; margin-bottom: 1rem; }
+
+/* --- Botones Principales --- */
+.stButton>button:not([kind="secondary"]) { border-radius: 6px; padding: 8px 18px; font-weight: 500; border: 1px solid var(--light-accent-primary); background-color: var(--light-accent-primary); color: white; transition: all 0.2s ease; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+.stButton>button:not([kind="secondary"]):hover { background-color: var(--light-accent-secondary); border-color: var(--light-accent-secondary); color: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+.stButton>button:not([kind="secondary"]):active { background-color: #084298; border-color: #084298; }
+.stButton>button:disabled { background-color: #ced4da; border-color: #ced4da; color: #6c757d; }
+
+/* --- Tarjetas para Métricas (Sin Icono) --- */
+.metric-card { background-color: var(--light-bg-primary); border: 1px solid var(--light-border-color); border-radius: 6px; padding: 1rem 1.25rem; text-align: center; margin-bottom: 1rem; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04); transition: all 0.2s ease; height: 100%; display: flex; flex-direction: column; justify-content: center; }
+.metric-card:hover { border-color: #adb5bd; box-shadow: 0 3px 6px rgba(0, 0, 0, 0.06); }
+.metric-card h3 { margin-top: 0; margin-bottom: 0.2rem; font-size: 0.85em; color: var(--light-text-secondary); font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
+.metric-card .value { font-size: 1.7em; font-weight: 600; color: var(--light-text-primary); margin-bottom: 0; line-height: 1.2; }
+.metric-card .value span { font-size: 0.5em !important; font-weight: 400; color: var(--light-text-secondary); margin-left: 3px; }
+
+/* --- Expanders --- */
+.stExpander { border: 1px solid var(--light-border-color); border-radius: 6px; background-color: var(--light-bg-primary); margin-top: 1rem; box-shadow: 0 1px 2px rgba(0,0,0,0.03); overflow: hidden; }
+.stExpander header { font-weight: 500; color: var(--light-text-primary); padding: 10px 15px; border-bottom: 1px solid var(--light-border-color); background-color: var(--light-bg-secondary); transition: background-color 0.2s ease; }
+.stExpander header:hover { background-color: #e9ecef; }
+.stExpander [data-testid="stExpanderDetails"] { padding: 15px; background-color: var(--light-bg-primary); }
+
+/* --- Separador --- */
+hr.custom-hr { border: 0; height: 1px; background-color: var(--light-border-color); margin: 2rem 0; }
+
+/* --- Inputs y Formularios --- */
+.stTextInput input, .stTextInput textarea, .stNumberInput input { border-radius: 4px; border: 1px solid #ced4da; background-color: #fff; color: var(--light-text-primary); padding: 8px 12px; transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; }
+.stTextInput input:focus, .stTextInput textarea:focus, .stNumberInput input:focus { border-color: #86b7fe; background-color: #fff; box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, .25); color: var(--light-text-primary); }
+div[data-testid="stForm"] { border: 1px solid var(--light-border-color); border-radius: 8px; padding: 1.5rem; background-color: var(--light-bg-primary); box-shadow: 0 1px 3px rgba(0,0,0,0.04); margin-top: 1rem; }
+div[data-testid="stForm"] .stButton>button { width: 100%; }
+
+/* Alertas Streamlit (usando st.error etc. o markdown con clase) */
+/* Estas son las clases por defecto de Streamlit para alertas, ajustamos un poco */
+div[data-testid="stAlert"] { border-radius: 4px; border-width: 1px; border-style: solid; border-left-width: 5px; padding: 0.8rem 1rem; margin-bottom: 1rem; font-size: 0.95rem; }
+div[data-testid="stAlert"] a { font-weight: bold; }
+div[data-testid="stAlert"] code { background-color: rgba(0,0,0,0.05); padding: 0.2em 0.4em; border-radius: 3px; color: #d63384; }
+/* Colores específicos para tema claro si usamos st.info/error/etc directamente */
+div[data-testid="stInfo"] { border-color: var(--light-info-border); background-color: var(--light-info-bg); color: var(--light-info-text); }
+div[data-testid="stWarning"] { border-color: var(--light-warning-border); background-color: var(--light-warning-bg); color: var(--light-warning-text); }
+div[data-testid="stSuccess"] { border-color: var(--light-success-border); background-color: var(--light-success-bg); color: var(--light-success-text); }
+div[data-testid="stError"] { border-color: var(--light-error-border); background-color: var(--light-error-bg); color: var(--light-error-text); }
+/* Reglas para cuando usamos markdown con <div class="stAlert stInfo"> etc. */
+.stAlert.stInfo { background-color: var(--light-info-bg); border-color: var(--light-info-border); color: var(--light-info-text); }
+.stAlert.stInfo a { color: #084298; }
+.stAlert.stWarning { background-color: var(--light-warning-bg); border-color: var(--light-warning-border); color: var(--light-warning-text); }
+.stAlert.stWarning a { color: #664d03; }
+.stAlert.stSuccess { background-color: var(--light-success-bg); border-color: var(--light-success-border); color: var(--light-success-text); }
+.stAlert.stSuccess a { color: #0f5132; }
+.stAlert.stError { background-color: var(--light-error-bg); border-color: var(--light-error-border); color: var(--light-error-text); }
+.stAlert.stError a { color: #842029; }
+
+/* Colores para los span de estado en Tab 1 */
+span.status-normal { color: var(--status-normal-color); font-weight: bold; }
+span.status-alta { color: var(--status-alta-color); font-weight: bold; }
+span.status-muy-alta { color: var(--status-muy-alta-color); font-weight: bold; }
+span.status-muy-baja { color: var(--status-muy-baja-color); font-weight: bold; }
+span.status-normal-o-baja { color: var(--status-normal-color); font-weight: bold; }
+span.status-baja-normal-sin-delta { color: var(--status-normal-color); font-weight: bold; }
+span.status-indeterminado { color: var(--status-default-color); font-style: italic; }
+
+/* Iconos dentro de markdown (si se usaran, pero los quitamos) */
+/* .stAlert i { margin-right: 0.6em; opacity: 0.8; } */
+
+/* Ajuste para listas markdown dentro de la sección de detalles */
+div[data-testid="stMarkdownContainer"] ul, div[data-testid="stMarkdownContainer"] ol {
+  padding-left: 1.5rem; /* Añadir indentación a las listas */
+  margin-top: 0.5rem;
+}
+div[data-testid="stMarkdownContainer"] li {
+  margin-bottom: 0.25rem; /* Espacio entre elementos de lista */
+}
+
