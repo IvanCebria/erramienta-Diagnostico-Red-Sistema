@@ -23,6 +23,4 @@ PORT_DATA = {
     5900: "VNC (Control Remoto Gráfico)",
     8080: "HTTP Alternativo / Proxy / Apache Tomcat",
     8443: "HTTPS Alternativo / Tomcat SSL"
-    # Puedes añadir más puertos y descripciones aquí si lo necesitas
-    # Asegúrate de que los puertos coincidan con la lista PUERTOS_COMUNES_TCP en app.py
 }
