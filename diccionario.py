@@ -1,7 +1,6 @@
 # diccionario.py
 
 # Diccionario que mapea puertos TCP comunes a sus descripciones/servicios habituales
-# La variable DEBE llamarse PORT_DATA para que funcione el 'from diccionario import PORT_DATA'
 PORT_DATA = {
     21: "FTP (Transferencia de Ficheros - Control)",
     22: "SSH (Secure Shell - Acceso Remoto Seguro) / SFTP",
@@ -27,5 +26,3 @@ PORT_DATA = {
     # Puedes añadir más puertos y descripciones aquí si lo necesitas
     # Asegúrate de que los puertos coincidan con la lista PUERTOS_COMUNES_TCP en app.py
 }
-
-# Puedes añadir otras constantes o datos relacionados con puertos aquí si quisieras en el futuro
